@@ -1,0 +1,30 @@
+body{
+    position: relative;
+}
+body > div#search_floating{
+    border: 1px solid #fc8019;
+    width: 563px;
+    /* padding: 9.575px; */
+    position: absolute;
+    top: 55.35px;
+    left: 441px;
+    display: none;
+    box-sizing: border-box;
+}
+body > div#search_floating > p{
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0%;
+    padding: 1% 2%;
+
+    font-weight: bold;
+    background-color: white;
+    font-family: 'Mulish', sans-serif;
+    overflow: hidden;
+
+    /* border: 1px solid black; */
+}
+body > div#search_floating > p:hover{
+    background-color: #fc8019;
+    box-sizing: border-box;
+}

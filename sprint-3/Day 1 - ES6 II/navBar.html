@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube-Masai</title>
+    <style>
+        body{
+            /* background-color: #202020; */
+            margin: 0%;
+            padding: 0%;
+        }
+        nav{
+            /* border: 1px solid red; */
+            display: flex;
+            height: 62px;
+            box-sizing: border-box;
+            padding: 0.4%;
+            background-color: grey;
+        }
+        nav > div.left{
+            display: flex;
+            align-items: center;
+        }
+        nav > div.left > div#options{
+            width: 20%;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 2%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        nav > div.left > div#logo{
+            width: 80%;
+            display: flex;
+            align-items: center;
+            padding: 2%;
+            box-sizing: border-box;
+            height: 100%;
+        }
+        nav > div.left > div#logo > img{
+            width: 15%;
+        }
+        nav > div.left > div#options > img{
+            width: 60%;
+        }
+        nav > div.left > div{
+           /* border: 1px solid black;  */
+        }
+        nav > div.side{
+            /* flex : 5; */
+            width: 28%;
+            /* border: 1px solid black; */
+        }
+        nav > div.center{
+            /* flex: 8; */
+            width: 44%;
+            /* border: 1px solid green; */
+        }
+        nav > div.mid{
+            display: flex;
+        }
+       
+        nav > div.mid > input{
+            box-sizing: border-box;
+            width: 87%;
+            padding: 1.2%;
+            font-size: 110%;
+            font-weight: 400;
+            color: snow;
+            background-color: #121212;
+            /* border: 1px solid grey; */
+            border: none;
+        } 
+        nav > div.mid > div#search_logo{
+            /* border: 1px solid black; */
+            width: 13%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;    
+            padding: 2.5%;
+            background-color: rgb(201, 171, 171);
+        }
+        nav > div.mid > div > img{
+            width: 68%;
+            /* height: 100%; */
+            box-sizing: border-box;
+            /* border: 1px solid black; */
+        }
+        nav > div.right{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        nav > div.right > img{
+            /* border: 1px solid black; */
+            width: 25px;
+            margin-right: 5%;
+        }
+        #page_body{
+            /* background-color: #121212;    */
+            display: flex;
+        }
+        #page_body > div.left{
+            width: 15%;
+            height: 100vh;
+            /* border: 1px solid yellow; */
+            background-color: #252424;
+        }
+        #page_body > div.right{
+            width: 85%;
+            height: 100vh;
+            /* border: 1px solid white; */
+            background-color: #181818;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class ="left side">
+            <div id="options">
+                <img src="https://t4.ftcdn.net/jpg/02/22/45/37/240_F_222453794_svICL3f1JxGrAiFTu6GPhSW8RHlobSBJ.jpg" alt="">
+            </div>
+            <div id="logo">
+                <img src="https://cdn-icons-png.flaticon.com/128/1384/1384060.png" alt="">
+            </div>
+        </div>
+        <div class ="mid center">
+            <input type="text" name="" id="search_box" placeholder="Search">
+            <div id ="search_logo">
+                <img src="https://cdn.iconscout.com/icon/free/png-256/search-2287049-1907871.png" alt="">
+            </div>
+        </div>
+        <div class ="right side">
+            <img src="https://cdn-icons-png.flaticon.com/128/686/686458.png" alt="">
+            <img src="https://cdn-icons-png.flaticon.com/128/873/873236.png" alt="">
+            <img src="https://cdn-icons-png.flaticon.com/128/876/876183.png" alt="">
+            <img src="https://cdn-icons.flaticon.com/png/128/552/premium/552721.png?token=exp=1641400884~hmac=e53a78ddaff29d069ae4caabcdeafdf2" alt="">
+        </div>
+    </nav>
+    <div id="page_body">
+        <div class="left">
+
+        </div>
+        <div class="right">
+
+        </div>
+    </div>
+</body>
+</html>

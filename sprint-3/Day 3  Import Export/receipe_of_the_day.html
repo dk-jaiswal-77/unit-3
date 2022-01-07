@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masai - Reciepe Of The Day</title>
+    <link rel="stylesheet" href="./styles/navBar.css">
+    <link rel="stylesheet" href="./styles/navBar_search_floating.css">
+
+</head>
+<body>
+    <!-- import the contents of headers  -->
+    <header></header>
+    
+    <!-- hidden initially, this is to show available options while searching -->
+    <div id="search_floating"></div>
+</body>
+</html>
+<script type="module">
+    // for inserting navBar into page 
+    import navBar from "./components/navBar.js";
+    document.querySelector("header").innerHTML = navBar();
+    // --------------------------------------------------------------------------------->
+
+    // search functionality for search box  // debouncing concept
+    document.querySelector("#search_box").addEventListener("beforeinput", dilemma_for_network_request);
+
+    var timeout_id;
+    const url = "";
+
+    import {dilemma_for_network_request, make_network_request, show_searchList} from "./components/searchBox_debouncing.js";
+
+    // ------------------------------------------------------------------------------------>
+
+</script>

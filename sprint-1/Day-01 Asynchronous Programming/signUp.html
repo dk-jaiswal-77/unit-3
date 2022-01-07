@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up</title>
+    <style>
+        nav{
+            border: 2px solid grey;
+            width: 95%;
+            margin: 1% auto;
+            padding: 1%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        nav > div{
+            /* border: 1px solid red; */
+            width: 16%;
+            display: flex;
+            justify-content: space-between;
+            margin-right: 2%;
+        }
+        nav > div > span{
+            /* border: 1px solid green; */
+            font-size: 140%;
+            font-weight: bolder;
+            color: slategray;
+        }
+        form{
+            /* border: 1px solid red; */
+            width: 25%;
+            padding: 2%;
+            margin: 2% auto;
+            background-color: khaki;
+            border-radius: 3px;
+        }
+        form > div{
+            /* border: 1px solid black; */
+            margin-bottom:6%;
+        }
+        form > div input{
+            width: 100%;
+            box-sizing: border-box;
+            padding: 2%;
+            font-size: 100%;
+            color: grey;
+            margin-top: 1.3%;
+        }
+        form > div > label{
+            font-size: 120%;
+            font-weight: bold;
+            /* border: 1px solid black; */
+        }
+
+        form #submit{
+            border: none;
+            background-color: black;
+            color: white;
+            padding: 2%;
+            font-size: 120%;
+            font-weight: bold;
+        }
+        form #submit:hover{
+            background-color: grey;
+        }
+        form #submit:active{
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div>
+            <span>Home</span>
+            <span>Log-In</span>
+            <span>Sign-Up</span>
+        </div>
+    </nav>
+    <form action="">
+        <div>
+            <label for="name">Name:</label>
+            <div>
+                <input type="text" name="" id="name">
+            </div>
+        </div>
+
+        <div>
+            <label for="contact_no">Contact No:</label>
+            <div>
+                <input type="number" name="" id="contact_no">
+            </div>
+        </div>
+
+        <div>
+            <label for="email">E-mail Id:</label>
+            <div>
+                <input type="email" name="" id="email">
+            </div>
+        </div>
+
+        <div>
+            <label for="password">Password:</label>
+            <div>
+                <input type="password" name="" id="password">
+            </div>
+        </div>
+        <div>
+            <input type="submit" id="submit" value="Sign-Up">
+        </div>
+    </form>
+</body>
+</html>
+<script>
+    var user_credential_arr = JSON.parse(localStorage.getItem("user_credential_arr")) || [];
+    
+    document.querySelector("form").addEventListener("submit", add_to_localStorage);
+    function add_to_localStorage (event_obj)
+    {
+        event_obj.preventDefault();
+        // checking all the input fields are filled or not
+        var name = document.querySelector("#name").value;
+        var contact_no = document.querySelector("#contact_no").value;
+        var email = document.querySelector("#email").value;
+        var password = document.querySelector("#password").value;
+
+        if(name == "" || contact_no == "" || email == "" || password == "")
+        {
+            alert("Please fill up all the details!")
+        }
+        else
+        {
+            var user_credential_obj = {
+                name : name, 
+                contact_no : contact_no,
+                email : email,
+                password : password
+            };
+            user_credential_arr.push(user_credential_obj);
+            localStorage.setItem("user_credential_arr", JSON.stringify(user_credential_arr));
+            window.location.href = "./logIn.html";
+            // window.location.reload();
+        }
+    }
+</script>
