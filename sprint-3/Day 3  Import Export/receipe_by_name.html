@@ -10,6 +10,127 @@
     <link rel="stylesheet" href="./styles/navBar_search_floating.css">
     <style>
 
+        /* styles for showing random meals on page initially --------------------------------------*/
+        #meals_container{
+            /* border: 1px solid black; */
+            padding: 2% 4%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(200px, auto);
+            grid-gap: 25px 25px;
+        }
+        #meals_container > div{
+            /* border: 1px solid red; */
+        }
+        #meals_container > div > img{
+            width: 100%;
+        }
+        #meals_container > div > p{
+            /* border: 1px solid black; */
+            font-size: 130%;
+            font-weight: bold;
+            font-family: 'Mulish', sans-serif;
+            color: #fc8019;
+        }
+        /* -------------------------------------------------------------------------------- */
+
+        /* styles for showing searchedMeal Receipe on the same page ---------------------------- */
+
+        #recipe_container{
+            /* border: 1px solid red; */
+            padding: 2% 4%;
+            display: none;
+        }
+
+        #thumbnail_ingredients{
+            /* border: 1px solid black; */
+            margin: 0px auto;
+            width: 900px;
+            display: flex;
+            gap: 100px;
+            justify-content: space-evenly;
+            /* align-items: center; */
+        }
+        #thumbnail_ingredients > img{
+            width: 500px;
+            height: 500px;
+            border-radius: 5px;
+
+        }
+        #ingredients{
+            /* border: 1px solid red; */
+            width: 300px;
+            height: 500px;
+            overflow: scroll;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* align-items: center; */
+        }
+
+        #ingredients > div{
+            /* border: 1px solid black; */
+            padding: 1.5%;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #fc8019;
+        }
+        #ingredients > div > span:first-child{
+            justify-self: flex-start;
+            font-weight: bolder;
+            font-size: 120%;
+            color: #ed0331;
+        }
+
+        #ingredients > div > span:last-child{
+            justify-self: flex-end;
+            color: grey;
+            font-size: 100%;
+        }
+
+        #ingredients > div > span{
+            /* border: 1px solid green; */
+            font-family: 'Mulish', sans-serif;
+        }
+
+        #recipe_container > h2{
+            width: max-content;
+            /* border: 1px solid black; */
+            color: #fc8019;
+            text-align: center;
+            margin: 2% auto;
+            margin-top: 8%;
+            padding: 5px;
+        }
+
+        #recipe_container > h1{
+            color: white;
+            width: 900px;
+            background-color: #fc8019;
+            padding: 1%;
+            box-sizing: border-box;
+            margin: 3% auto;
+            text-align: center;
+        }
+
+        #recipe_container > *{
+            width: 900px;
+            box-sizing: border-box;
+            /* border: 1px solid black;    */
+            margin: 0% auto;
+        }
+        iframe{
+            width: 100%;
+            height: 500px;
+
+        }
+        div#recipe{
+            font-family: 'Mulish', sans-serif;
+            color: grey;
+            font-size: 110%;
+            line-height: 140%;
+        }
+
     </style>
 </head>
 <body>
@@ -19,14 +140,44 @@
     <!-- hidden initially, this is to show available options while searching -->
     <div id="search_floating"></div>
 
+    <!-- container containing random food items to display on page -->
+    <div id="meals_container">
+
+    </div>
+
+    <!-- container containing receipe details of single meal -->
+    <div id="recipe_container">
+        <h1 id="mealName"></h1>
+        
+        <div id="thumbnail_ingredients">
+            <img src="" alt="" id="thumbnail">
+            <div id="ingredients"></div>
+        </div>
+
+        <h2 id="recipe_title">Recipe</h2>
+
+        <div id="recipe"></div>
+
+        <h2 id="iframe_title">Recipe Video</h2>
+
+        <div>
+            <iframe frameborder="0" title="YouTube video player" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
 </body>
 </html>
+
+
 <script type="module">
     //  for inserting navBar into page 
     import navBar from "./components/navBar.js";
     document.querySelector("header").innerHTML = navBar();
 
     //---------------------------------------------------------------------------------->
+
+
 
     // search functionality for search box  // debouncing concept
     document.querySelector("#search_box").addEventListener("beforeinput", dilemma_for_network_request);
@@ -36,9 +187,43 @@
 
     import {dilemma_for_network_request, make_network_request, show_searchList} from "./components/searchBox_debouncing.js";
 
-    console.log(dilemma_for_network_request);
-    console.log(make_network_request);
-    console.log(show_searchList);
     // --------------------------------------------------------------------->
     
+
+
+    // especially for this page // filling up the body of this page with random dishes
+    async function get_list_of_meals(first_letter)
+    {
+        let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${first_letter}`);
+        let {meals} = await response.json();
+        // console.log(meals);
+        displayMeals(meals);
+    }
+    get_list_of_meals("c");
+
+
+    function displayMeals(meals)
+    {
+        meals.forEach((meal) => {
+
+            
+            // console.log(meal);
+            let div = document.createElement("div");
+            
+            let img = document.createElement("img");
+            img.src = meal.strMealThumb;
+            
+            let p = document.createElement("p");
+            p.textContent = meal.strMeal;
+            
+            div.append(img, p);
+            
+            document.querySelector("#meals_container").append(div);
+
+        })
+    }
+    // ---------------------------------------------------------------------------------->
+
+
+
 </script>
